@@ -1,7 +1,8 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import './App.css';
 import axios from "axios";
-import Template from "./components/Template";
+import Template from "./components/js/Template";
+import TodoList from "./components/js/TodoList";
 
 //useEffect 사용하면 앱이 처음 실행됐을 때 무언가 실행되도록 만들 수 있음
 
@@ -27,9 +28,33 @@ const App = () => {
   //   })  
   // }
 
+  const [todos, setTodos] = useState([
+    {
+      id: 1,
+      user_id: 1,
+      content: "할일 1",
+      completed: true
+    },
+    {
+      id: 2,
+      user_id: 1,
+      content: "할일 2",
+      completed: false
+    },
+    {
+      id: 3,
+      user_id: 1,
+      content: "할일 3",
+      completed: true
+    }
+  ])
   return (
     <div className="App">
-      <Template>뇽안</Template>
+      <Template>
+        <TodoList 
+        todos={todos}
+        />
+      </Template>
     </div>
   );
 }
