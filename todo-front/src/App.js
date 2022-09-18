@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from "react";
 import './App.css';
 import axios from "axios";
-import Template from "./components/js/Template";
-import TodoList from "./components/js/TodoList";
+import Template from "./components/js/Template.js";
+import TodoList from "./components/js/TodoList.js";
+import TodoInsert from "./components/js/TodoInsert.js";
 
 //useEffect 사용하면 앱이 처음 실행됐을 때 무언가 실행되도록 만들 수 있음
 
@@ -33,13 +34,13 @@ const App = () => {
       id: 1,
       user_id: 1,
       content: "할일 1",
-      completed: true
+      completed: false
     },
     {
       id: 2,
       user_id: 1,
       content: "할일 2",
-      completed: false
+      completed: true
     },
     {
       id: 3,
@@ -49,13 +50,12 @@ const App = () => {
     }
   ])
   return (
-    <div className="App">
-      <Template>
-        <TodoList 
-        todos={todos}
-        />
-      </Template>
-    </div>
+    <Template todoLength={todos.length}>
+      <TodoList 
+      todos={todos}
+      />
+      <TodoInsert />
+    </Template>
   );
 }
 

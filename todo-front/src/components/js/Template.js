@@ -1,9 +1,10 @@
 import React, { Children } from "react";
+import "../css/Template.css";
 
-const Template = ({children}) => {
+const Template = ({children, todoLength}) => {
     return (<div>
-        <div>TO DO LIST</div>
-        <nav>{children}</nav>
+        <div className = "title">TO DO LIST ({todoLength})</div>
+        <div>{children}</div>
     </div>);
 };
 
