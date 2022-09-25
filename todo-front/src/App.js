@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import './App.css';
 import axios from "axios";
+import { BrowserRouter, Route} from "react-router-dom";
 import Template from "./components/js/Template.js";
 import TodoList from "./components/js/TodoList.js";
 import TodoInsert from "./components/js/TodoInsert.js";
@@ -57,6 +58,20 @@ const App = () => {
       <TodoInsert />
     </Template>
   );
+
+  // return (
+  //   <BrowserRouter>
+  //     <Route path="/" exact={true} component={Login} />
+  //     <Route path="/login" exact={true} component={Login} />
+  //     {(accessToken != null && accessToken !="")
+  //     ? 
+  //     <div>
+  //       <Route path="/home" component={Home}/>
+  //      </div>
+  //       :<Route path="/" exact={true} component={Login} />
+  //     }
+  //   </BrowserRouter>
+  // );
 }
 
 export default App;
