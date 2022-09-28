@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from "react";
 import './App.css';
 import axios from "axios";
-import Template from "./components/js/Template";
-import TodoList from "./components/js/TodoList";
+import { BrowserRouter, Route} from "react-router-dom";
+import Template from "./components/js/Template.js";
+import TodoList from "./components/js/TodoList.js";
+import TodoInsert from "./components/js/TodoInsert.js";
 
 //useEffect 사용하면 앱이 처음 실행됐을 때 무언가 실행되도록 만들 수 있음
 
@@ -28,18 +30,20 @@ const App = () => {
   //   })  
   // }
 
+  const [selectedTodo, setSelectedTodo] = useState(null);
+  const [insertToggle, setInsertToggle] = useState(false);
   const [todos, setTodos] = useState([
     {
       id: 1,
       user_id: 1,
       content: "할일 1",
-      completed: true
+      completed: false
     },
     {
       id: 2,
       user_id: 1,
       content: "할일 2",
-      completed: false
+      completed: true
     },
     {
       id: 3,
@@ -48,15 +52,29 @@ const App = () => {
       completed: true
     }
   ])
+
   return (
-    <div className="App">
-      <Template>
-        <TodoList 
-        todos={todos}
-        />
-      </Template>
-    </div>
+    <Template todoLength={todos.length}>
+      <TodoList 
+      todos={todos}
+      />
+      {insertToggle && <TodoInsert />}
+    </Template>
   );
+
+  // return (
+  //   <BrowserRouter>
+  //     <Route path="/" exact={true} component={Login} />
+  //     <Route path="/login" exact={true} component={Login} />
+  //     {(accessToken != null && accessToken !="")
+  //     ? 
+  //     <div>
+  //       <Route path="/home" component={Home}/>
+  //      </div>
+  //       :<Route path="/" exact={true} component={Login} />
+  //     }
+  //   </BrowserRouter>
+  // );
 }
 
 export default App;
