@@ -30,6 +30,8 @@ const App = () => {
   //   })  
   // }
 
+  const [selectedTodo, setSelectedTodo] = useState(null);
+  const [insertToggle, setInsertToggle] = useState(false);
   const [todos, setTodos] = useState([
     {
       id: 1,
@@ -50,12 +52,13 @@ const App = () => {
       completed: true
     }
   ])
+
   return (
     <Template todoLength={todos.length}>
       <TodoList 
       todos={todos}
       />
-      <TodoInsert />
+      {insertToggle && <TodoInsert />}
     </Template>
   );
 
