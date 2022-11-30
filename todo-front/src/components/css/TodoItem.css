@@ -14,7 +14,9 @@
 }
 .list {
     cursor: pointer;
-    flex: 1;
+    flex-basis: 0%;
+    flex-shrink: 1;
+    flex-grow: 0;
     display: flex;
     align-items: center;
   }

@@ -5,6 +5,7 @@ import { BrowserRouter, Route} from "react-router-dom";
 import Template from "./components/js/Template.js";
 import TodoList from "./components/js/TodoList.js";
 import TodoInsert from "./components/js/TodoInsert.js";
+import { MdAddCircle } from "react-icons/md";
 
 //useEffect 사용하면 앱이 처음 실행됐을 때 무언가 실행되도록 만들 수 있음
 
@@ -53,11 +54,25 @@ const App = () => {
     }
   ])
 
+  const onInsertToggle = () => {
+    setInsertToggle(prev => !prev);
+  }
+
+  const onCompletedToggle = id => {
+    setTodos(todos =>
+      todos.map(todo =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  }
+
   return (
     <Template todoLength={todos.length}>
       <TodoList 
-      todos={todos}
+        todos={todos}
+        onCompletedToggle={onCompletedToggle}
       />
+      <div className="add-todo-button" onClick={onInsertToggle}><MdAddCircle /></div>
       {insertToggle && <TodoInsert />}
     </Template>
   );
