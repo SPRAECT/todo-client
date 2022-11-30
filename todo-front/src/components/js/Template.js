@@ -3,7 +3,7 @@ import "../css/Template.css";
 
 const Template = ({children, todoLength}) => {
     return (<div>
-        <div className = "title"> TO DO LIST ({todoLength})</div>
+        <div className = "title"> 오늘 할 일 {todoLength}개</div>
         <div>{children}</div>
     </div>);
 };

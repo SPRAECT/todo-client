@@ -9,12 +9,16 @@ const TodoInsert = ({
     onRemove,
     onUpdate
 }) => {
+    const [value, setValue] = useState("");
+    //background는 팝업의 백그라운드 역할
     return (
     <div> 
         <div className="background" onClick={onInsertToggle}></div> 
     <form>
-        <input></input>
-        <button type="submit"><MdAddCircle/></button>
+        <input value={value} placeholder="할 일을 입력하세요."></input>
+        <button type="submit">
+            <MdAddCircle/>
+        </button>
     </form>
     </div>
     )
